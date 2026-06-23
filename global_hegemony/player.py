@@ -18,8 +18,8 @@ class Player(ABC):
         self,
         name: str,
         capital: Number = STARTING_CAPITAL,
-        c: int = 7,
-        d: int = 3,
+        c: int = 5,
+        d: int = 5,
     ) -> None:
         if c + d != self.STRUCTURAL_TOTAL:
             raise ValueError(

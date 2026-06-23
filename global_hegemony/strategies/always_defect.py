@@ -6,7 +6,13 @@ from ..player import Player
 
 class AlwaysDefect(Player):
     def choose_action(self, view: GameView) -> Action:
-        return Action.DEFECT
+        if view.own_d > 0:
+            return Action.DEFECT
+
+        return Action.COOPERATE
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
+        return Modification.DECREASE_C
+    
+    def choose_self_modification(self, view):
         return Modification.DECREASE_C

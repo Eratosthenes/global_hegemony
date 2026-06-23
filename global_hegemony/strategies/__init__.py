@@ -14,6 +14,7 @@ from .disciplined_ambush import DisciplinedAmbush
 from .opening_raider import OpeningRaider
 from .saboteur_ambush import SaboteurAmbush
 from .forager import Forager
+from .cycle_defector import CycleDefector
 
 __all__ = [
     "AlwaysCooperate",
@@ -30,4 +31,5 @@ __all__ = [
     "OpeningRaider",
     "SaboteurAmbush",
     "Forager",
+    "CycleDefector",
 ]
