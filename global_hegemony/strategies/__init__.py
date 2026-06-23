@@ -13,6 +13,7 @@ from .disruptor import Disruptor
 from .disciplined_ambush import DisciplinedAmbush
 from .opening_raider import OpeningRaider
 from .saboteur_ambush import SaboteurAmbush
+from .forager import Forager
 
 __all__ = [
     "AlwaysCooperate",
@@ -27,5 +28,6 @@ __all__ = [
     "Disruptor",
     "DisciplinedAmbush",
     "OpeningRaider",
-    "SaboteurAmbush"
+    "SaboteurAmbush",
+    "Forager",
 ]

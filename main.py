@@ -5,12 +5,20 @@ from global_hegemony.tournament import Tournament, TournamentEntry, TournamentMo
 def main() -> None:
     entries = [
         TournamentEntry.from_player_class(
-            "Saboteur Ambush",
-            SaboteurAmbush,
+            "Peaceful Industrialist",
+            AlwaysCooperate,
         ),
         TournamentEntry.from_player_class(
-            "Disciplined Ambush",
-            DisciplinedAmbush,
+            "Forager",
+            Forager,
+        ),
+        TournamentEntry.from_player_class(
+            "Counter Raider",
+            CounterRaider,
+        ),
+        TournamentEntry.from_player_class(
+            "Saboteur Ambush",
+            SaboteurAmbush,
         ),
         TournamentEntry.from_player_class(
             "Opening Raider",
@@ -21,12 +29,8 @@ def main() -> None:
             TitForTat,
         ),
         TournamentEntry.from_player_class(
-            "Peaceful Industrialist",
-            AlwaysCooperate,
-        ),
-        TournamentEntry.from_player_class(
-            "Counter Raider",
-            CounterRaider,
+            "Disciplined Ambush",
+            DisciplinedAmbush,
         ),
         TournamentEntry.from_player_class(
             "Raid and Heal",
@@ -39,10 +43,6 @@ def main() -> None:
         TournamentEntry.from_player_class(
             "Cautious Industrialist",
             CautiousIndustrialist,
-        ),
-        TournamentEntry.from_player_class(
-            "Sentinel",
-            Sentinel,
         ),
     ]
 
