@@ -5,6 +5,10 @@ from global_hegemony.tournament import Tournament, TournamentEntry, TournamentMo
 def main() -> None:
     entries = [
         TournamentEntry.from_player_class(
+            "Peaceful Industrialist",
+            AlwaysCooperate,
+        ),
+        TournamentEntry.from_player_class(
             "Forager",
             Forager,
         ),
@@ -25,8 +29,12 @@ def main() -> None:
             RaidAndHeal,
         ),
         TournamentEntry.from_player_class(
-            "Peaceful Industrialist",
-            AlwaysCooperate,
+            "Cycle Defector",
+            CycleDefector,
+        ),
+        TournamentEntry.from_player_class(
+            "Always Defect",
+            AlwaysDefect,
         ),
     ]
 

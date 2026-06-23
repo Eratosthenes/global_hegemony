@@ -7,7 +7,7 @@ from .models import Number
 
 
 class Environment:
-    STARTING_BANK = 300 
+    STARTING_BANK = 200 
     SYNERGY_AMOUNT = 2
     DEFECTION_COST = 1
 

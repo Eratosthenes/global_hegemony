@@ -8,9 +8,10 @@ from global_hegemony.strategies import *
 
 def main() -> None:
     # player_one = RaidAndHeal("Raid and Heal Predator")
-    player_one = CycleDefector("Cycle Defector")
+    # player_one = CycleDefector("Cycle Defector")
+    player_one = AlwaysDefect("Always Defect")
     # player_one = Forager("Forager")
-    # player_one = DisciplinedAmbush("Disciplined Ambush")
+    # player_two = DisciplinedAmbush("Disciplined Ambush")
     # player_one = Ambush("Ambusher")
     player_two = AlwaysCooperate("Peaceful Industrialist")
     # player_two = CounterRaider("Counter Raider")
