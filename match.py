@@ -7,9 +7,8 @@ from global_hegemony.reporting import print_log_table, print_matchup, save_log_c
 from global_hegemony.strategies import *
 
 def main() -> None:
-    player_one = AlwaysCooperate("Peaceful Industrialist")
-    # player_two = CounterRaider("Counter Raider")
-    player_two = Ambush("Ambush")
+    player_one = Ambush("Ambush")
+    player_two = TitForTat("Tit for Tat")
 
     match = Match(player_one, player_two)
     match.play()

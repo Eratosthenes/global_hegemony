@@ -11,7 +11,17 @@ class TitForTat(Player):
         return view.opponent_previous_action
 
     def choose_self_modification(self, view: GameView) -> Modification:
-        return Modification.INCREASE_C
+        if view.own_c < view.opponent_c:
+            return Modification.INCREASE_C
+        elif view.own_c > view.opponent_c:
+            return Modification.DECREASE_C
+        else:
+            return Modification.NO_CHANGE
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
-        return Modification.INCREASE_C
+        if view.own_c > view.opponent_c:
+            return Modification.INCREASE_C
+        elif view.own_c < view.opponent_c:
+            return Modification.DECREASE_C
+        else:
+            return Modification.NO_CHANGE

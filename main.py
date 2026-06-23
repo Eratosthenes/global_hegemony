@@ -9,10 +9,6 @@ def main() -> None:
             Ambush,
         ),
         TournamentEntry.from_player_class(
-            "Cautious Industrialist",
-            CautiousIndustrialist,
-        ),
-        TournamentEntry.from_player_class(
             "Raid and Heal Predator",
             RaidAndHeal,
         ),
@@ -27,6 +23,10 @@ def main() -> None:
         TournamentEntry.from_player_class(
             "Peaceful Industrialist",
             AlwaysCooperate,
+        ),
+        TournamentEntry.from_player_class(
+            "Cautious Industrialist",
+            CautiousIndustrialist,
         ),
     ]
 
