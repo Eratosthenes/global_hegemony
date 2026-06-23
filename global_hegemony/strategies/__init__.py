@@ -7,6 +7,12 @@ from .tit_for_tat import TitForTat
 from .raid_and_heal import RaidAndHeal
 from .counter_raider import CounterRaider
 from .ambush import Ambush
+from .pacifier import Pacifier
+from .sentinel import Sentinel
+from .disruptor import Disruptor
+from .disciplined_ambush import DisciplinedAmbush
+from .opening_raider import OpeningRaider
+from .saboteur_ambush import SaboteurAmbush
 
 __all__ = [
     "AlwaysCooperate",
@@ -15,5 +21,11 @@ __all__ = [
     "TitForTat",
     "RaidAndHeal",
     "CounterRaider",
-    "Ambush"
+    "Ambush",
+    "Pacifier",
+    "Sentinel",
+    "Disruptor",
+    "DisciplinedAmbush",
+    "OpeningRaider",
+    "SaboteurAmbush"
 ]

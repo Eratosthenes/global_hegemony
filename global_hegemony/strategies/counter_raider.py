@@ -30,7 +30,7 @@ class CounterRaider(Player):
         self,
         view: GameView,
     ) -> Modification:
-        return Modification.NO_CHANGE
+        return Modification.INCREASE_C
 
     def choose_opponent_modification(
         self,
