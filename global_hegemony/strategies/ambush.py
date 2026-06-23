@@ -89,6 +89,8 @@ class Ambush(Player):
         Increasing the opponent's C reduces its D, which makes future weapon
         clashes more favorable to Striker.
         """
+        if self.has_launched and view.own_d <= view.opponent_c:
+            return Modification.DECREASE_C
 
         return Modification.INCREASE_C
 

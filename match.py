@@ -8,7 +8,8 @@ from global_hegemony.strategies import *
 
 def main() -> None:
     player_one = Ambush("Ambush")
-    player_two = TitForTat("Tit for Tat")
+    # player_two = TitForTat("Tit for Tat")
+    player_two = AlwaysCooperate("Peaceful Industrialist")
 
     match = Match(player_one, player_two)
     match.play()
