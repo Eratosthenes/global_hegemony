@@ -90,7 +90,7 @@ class SaboteurAmbush(Player):
 
     def choose_self_modification(self, view: GameView) -> Modification:
         if self.phase == self.BUILDING:
-            return Modification.DECREASE_C   # build the weapon
+            return Modification.INCREASE_D   # build the weapon
         if self.phase == self.RECOVERING:
             if view.own_c < self.REARM_C_TARGET:
                 return Modification.INCREASE_C   # rebuild production / pull D back to balance
@@ -101,7 +101,7 @@ class SaboteurAmbush(Player):
         # SABOTAGE: whenever we defect (strike phase), drive the victim's C DOWN so it
         # exits the match crippled and carries negative C into its next opponent. This is
         # the persistent-state weapon -- a debuff on the victim's whole remaining tournament.
-        return Modification.DECREASE_C
+        return Modification.INCREASE_D
 
     # --- projections ------------------------------------------------------
 

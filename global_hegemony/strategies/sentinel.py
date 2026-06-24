@@ -63,7 +63,7 @@ class Sentinel(Player):
         if view.own_c < self.SAFE_C_LOW:
             return Modification.INCREASE_C
         if view.own_c > self.SAFE_C_HIGH:
-            return Modification.DECREASE_C
+            return Modification.INCREASE_D
         return Modification.NO_CHANGE
 
     def choose_opponent_modification(self, view: GameView) -> Modification:

@@ -35,7 +35,7 @@ class Pacifier(Player):
         if view.own_c < self.SAFE_C_LOW:
             return Modification.INCREASE_C   # recover: climb out of the bleed zone
         if view.own_c > self.SAFE_C_HIGH:
-            return Modification.DECREASE_C   # trim excess C into a little defensive D
+            return Modification.INCREASE_D   # trim excess C into a little defensive D
         return Modification.NO_CHANGE
  
     def choose_opponent_modification(self, view: GameView) -> Modification:

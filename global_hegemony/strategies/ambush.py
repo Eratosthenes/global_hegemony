@@ -77,7 +77,7 @@ class Ambush(Player):
         if self.has_launched:
             return Modification.NO_CHANGE
 
-        return Modification.DECREASE_C
+        return Modification.INCREASE_D
 
     def choose_opponent_modification(
         self,
@@ -90,7 +90,7 @@ class Ambush(Player):
         clashes more favorable to Striker.
         """
         if self.has_launched and view.own_d <= view.opponent_c:
-            return Modification.DECREASE_C
+            return Modification.INCREASE_D
 
         return Modification.INCREASE_C
 

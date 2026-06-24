@@ -83,7 +83,7 @@ class DisciplinedAmbush(Player):
 
     def choose_self_modification(self, view: GameView) -> Modification:
         if self.phase == self.BUILDING:
-            return Modification.DECREASE_C   # convert C -> D, building the weapon
+            return Modification.INCREASE_D   # convert C -> D, building the weapon
         if self.phase == self.RECOVERING:
             # Re-industrialize: rebuild productive capacity (and pull D back from any
             # negative excursion the clash drove us into).
@@ -93,7 +93,7 @@ class DisciplinedAmbush(Player):
         return Modification.NO_CHANGE        # striking: hold the weapon
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
-        return Modification.DECREASE_C if view.own_d < view.opponent_d else Modification.INCREASE_C
+        return Modification.INCREASE_D if view.own_d < view.opponent_d else Modification.INCREASE_C
 
     # --- projections (same shape as the original) -------------------------
 

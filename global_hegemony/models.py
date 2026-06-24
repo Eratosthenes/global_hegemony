@@ -18,7 +18,7 @@ class Action(Enum):
 class Modification(Enum):
     """The change applied to the target's C value."""
 
-    DECREASE_C = -1
+    INCREASE_D = -1
     NO_CHANGE = 0
     INCREASE_C = 1
 

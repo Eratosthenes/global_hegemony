@@ -14,7 +14,7 @@ class TitForTat(Player):
         if view.own_c < view.opponent_c:
             return Modification.INCREASE_C
         elif view.own_c > view.opponent_c:
-            return Modification.DECREASE_C
+            return Modification.INCREASE_D
         else:
             return Modification.NO_CHANGE
 
@@ -22,6 +22,6 @@ class TitForTat(Player):
         if view.own_c > view.opponent_c:
             return Modification.INCREASE_C
         elif view.own_c < view.opponent_c:
-            return Modification.DECREASE_C
+            return Modification.INCREASE_D
         else:
             return Modification.NO_CHANGE

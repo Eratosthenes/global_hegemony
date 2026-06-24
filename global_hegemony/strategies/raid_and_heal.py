@@ -41,7 +41,7 @@ class RaidAndHeal(Player):
         """
         Rearm after a successful C/C healing round.
         """
-        return Modification.DECREASE_C
+        return Modification.INCREASE_D
 
     def choose_opponent_modification(
         self,
@@ -50,4 +50,4 @@ class RaidAndHeal(Player):
         """
         Choose the structural edit after unilateral defection.
         """
-        return Modification.DECREASE_C
+        return Modification.INCREASE_D

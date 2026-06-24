@@ -21,4 +21,4 @@ class OpeningRaider(Player):
         return Modification.INCREASE_C
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
-        return Modification.DECREASE_C
+        return Modification.INCREASE_D
