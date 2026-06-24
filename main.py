@@ -38,13 +38,13 @@ def main() -> None:
         ),
     ]
 
-    tournament = Tournament(entries, mode=TournamentMode.PERSISTENT)
+    tournament = Tournament(entries, mode=TournamentMode.FRESH)
     tournament.run()
     tournament.print_summary()
 
     statistics = run_randomized_tournament_samples(
         entries,
-        samples=100,
+        samples=500,
         mode=TournamentMode.PERSISTENT,
         # seed=42,
     )

@@ -1,4 +1,4 @@
-"""An anti-ambush strategy."""
+""" An anti-ambush strategy (Strongman). """
 
 from ..models import Action, GameView, Modification
 from ..player import Player
@@ -30,5 +30,5 @@ class AntiAmbush(Player):
         if view.opponent_previous_action is Action.DEFECT:
             return Modification.INCREASE_C
 
+        # we are attacking
         return Modification.NO_CHANGE
-
