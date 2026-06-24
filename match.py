@@ -9,12 +9,13 @@ from global_hegemony.strategies import *
 def main() -> None:
     # player_one = RaidAndHeal("Raid and Heal Predator")
     # player_one = CycleDefector("Cycle Defector")
-    player_one = AlwaysDefect("Always Defect")
+    player_one = AntiAmbush("Anti-Ambush Predator")
     # player_one = Forager("Forager")
-    # player_two = DisciplinedAmbush("Disciplined Ambush")
-    # player_one = Ambush("Ambusher")
-    player_two = AlwaysCooperate("Peaceful Industrialist")
+    player_two = DisciplinedAmbush("Disciplined Ambush")
+    # player_two = Ambush("Ambusher")
+    # player_two = AlwaysCooperate("Peaceful Industrialist")
     # player_two = CounterRaider("Counter Raider")
+    # player_two = TitForTat("Tit for Tat")
 
     match = Match(player_one, player_two)
     match.play()
