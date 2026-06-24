@@ -38,4 +38,8 @@ class CycleDefector(Player):
         return Modification.INCREASE_D
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
+        # if they just attacked, we resist
+        if view.opponent_previous_action is Action.DEFECT:
+            return Modification.INCREASE_C
+
         return Modification.INCREASE_D

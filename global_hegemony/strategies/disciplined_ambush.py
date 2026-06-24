@@ -33,8 +33,8 @@ class DisciplinedAmbush(Player):
         name: str = "Disciplined Ambush",
         *,
         capital: Number = Player.STARTING_CAPITAL,
-        c: int = 7,
-        d: int = 3,
+        c: int = 5,
+        d: int = 5,
     ) -> None:
         super().__init__(name=name, capital=capital, c=c, d=d)
         self.phase = self.BUILDING
@@ -93,7 +93,15 @@ class DisciplinedAmbush(Player):
         return Modification.NO_CHANGE        # striking: hold the weapon
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
-        return Modification.INCREASE_D if view.own_d < view.opponent_d else Modification.INCREASE_C
+        # resist if we are attacked
+        if view.opponent_previous_action is Action.DEFECT:
+            return Modification.INCREASE_C
+        
+        # if we are under-armed, try to catch up
+        if view.own_d < view.opponent_d:
+            return Modification.INCREASE_D
+        
+        return Modification.NO_CHANGE
 
     # --- projections (same shape as the original) -------------------------
 

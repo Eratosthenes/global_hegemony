@@ -5,15 +5,19 @@ from global_hegemony.tournament import Tournament, TournamentEntry, TournamentMo
 def main() -> None:
     entries = [
         TournamentEntry.from_player_class(
-            "Ambush",
-            Ambush,
+            "Spider",
+            DisciplinedAmbush,
         ),
         TournamentEntry.from_player_class(
-            "Peaceful Industrialist",
+            "Paperclip Maximizer",
             AlwaysCooperate,
         ),
         TournamentEntry.from_player_class(
-            "Raid and Heal",
+            "SpaceBeam",
+            CycleDefector,
+        ),
+        TournamentEntry.from_player_class(
+            "Raider",
             RaidAndHeal,
         ),
         TournamentEntry.from_player_class(
@@ -21,15 +25,11 @@ def main() -> None:
             TitForTat,
         ),
         TournamentEntry.from_player_class(
-            "Disciplined Ambush",
-            DisciplinedAmbush,
-        ),
-        TournamentEntry.from_player_class(
             "Forager",
             Forager,
         ),
         TournamentEntry.from_player_class(
-            "Always Defect",
+            "Warrior",
             AlwaysDefect,
         ),
         TournamentEntry.from_player_class(
@@ -38,7 +38,7 @@ def main() -> None:
         ),
     ]
 
-    tournament = Tournament(entries, mode=TournamentMode.FRESH)
+    tournament = Tournament(entries, mode=TournamentMode.PERSISTENT)
     tournament.run()
     tournament.print_summary()
 
