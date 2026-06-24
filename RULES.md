@@ -7,8 +7,8 @@
 Each player begins the tournament with:
 
 - **50 capital points**
-- **C = 7** productive/extraction capacity (C := cooperate)
-- **D = 3** predatory/coercive capacity (D := defect)
+- **C = 5** productive/extraction capacity (C := cooperate)
+- **D = 5** predatory/coercive capacity (D := defect)
 
 A player's internal C/D payoff structure always satisfies:
 
