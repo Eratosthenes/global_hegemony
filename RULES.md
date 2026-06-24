@@ -50,7 +50,7 @@ Environment Bank of 100 points.
 
 - Nobody extracts from the environment.
 - The player with the larger D receives the difference between the two D values from the weaker player.
-- One point is burned from the environment.
+- Two points are burned from the environment.
 - No structural C/D modifications occur.
 
 ## Bankruptcy
