@@ -21,6 +21,8 @@ from copy import deepcopy
 from dataclasses import dataclass
 from enum import Enum
 from itertools import combinations
+from random import Random
+from statistics import fmean, stdev
 from typing import Callable, Iterable
 
 from .formatting import format_number
@@ -109,6 +111,20 @@ class Standing:
 
         return f"DQ: {self.disqualification_reason}"
 
+
+@dataclass(frozen=True)
+class TournamentSampleStatistics:
+    """Aggregate results for one strategy across randomized tournaments."""
+
+    name: str
+    samples: int
+    average_points: float
+    max_points: Number
+    points_standard_deviation: float
+    average_wins: float
+    average_losses: float
+    average_draws: float
+    average_bankruptcies: float
 
 class Tournament:
     """Run a complete Global Hegemony round-robin tournament.
@@ -784,6 +800,164 @@ class Tournament:
                 f"Winners: {names} "
                 f"with {format_number(champions[0].points)} points each"
             )
+
+def run_randomized_tournament_samples(
+    entries: Iterable[TournamentEntry],
+    *,
+    samples: int = 100,
+    mode: TournamentMode = TournamentMode.PERSISTENT,
+    max_turns_per_match: int = 1_000,
+    seed: int | None = None,
+) -> list[TournamentSampleStatistics]:
+    """Run randomized tournament schedules and aggregate player statistics.
+
+    Each sample randomly permutes the entry list, then runs the normal
+    balanced circle-method schedule. In persistent mode, this changes both
+    matchup order and seat assignment while preserving equal rest: every
+    strategy still plays exactly once per round.
+
+    Random permutations are sampled independently, so the same permutation
+    may occur more than once. Pass ``seed`` for reproducible results.
+    """
+
+    entry_list = list(entries)
+
+    if samples <= 0:
+        raise ValueError("samples must be positive.")
+
+    if not entry_list:
+        raise ValueError("At least one tournament entry is required.")
+
+    rng = Random(seed)
+
+    points_by_player: dict[str, list[Number]] = {
+        entry.name: []
+        for entry in entry_list
+    }
+    wins_by_player: dict[str, list[int]] = {
+        entry.name: []
+        for entry in entry_list
+    }
+    losses_by_player: dict[str, list[int]] = {
+        entry.name: []
+        for entry in entry_list
+    }
+    draws_by_player: dict[str, list[int]] = {
+        entry.name: []
+        for entry in entry_list
+    }
+    bankruptcy_by_player: dict[str, list[bool]] = {
+        entry.name: []
+        for entry in entry_list
+    }
+
+    for _ in range(samples):
+        shuffled_entries = rng.sample(
+            entry_list,
+            k=len(entry_list),
+        )
+
+        tournament = Tournament(
+            shuffled_entries,
+            mode=mode,
+            max_turns_per_match=max_turns_per_match,
+        )
+        tournament.run()
+
+        for name, standing in tournament.standings.items():
+            points_by_player[name].append(standing.points)
+            wins_by_player[name].append(standing.wins)
+            losses_by_player[name].append(standing.losses)
+            draws_by_player[name].append(standing.draws)
+            bankruptcy_by_player[name].append(standing.disqualified)
+
+    statistics: list[TournamentSampleStatistics] = []
+
+    for entry in entry_list:
+        name = entry.name
+        point_values = points_by_player[name]
+        point_floats = [float(value) for value in point_values]
+
+        statistics.append(
+            TournamentSampleStatistics(
+                name=name,
+                samples=samples,
+                average_points=fmean(point_floats),
+                max_points=max(point_values),
+                points_standard_deviation=(
+                    stdev(point_floats)
+                    if len(point_floats) > 1
+                    else 0.0
+                ),
+                average_wins=fmean(wins_by_player[name]),
+                average_losses=fmean(losses_by_player[name]),
+                average_draws=fmean(draws_by_player[name]),
+                average_bankruptcies=fmean([float(b) for b in bankruptcy_by_player[name]]),
+            )
+        )
+
+    return sorted(
+        statistics,
+        key=lambda result: (
+            -result.average_points,
+            result.name.casefold(),
+        ),
+    )
+
+def print_randomized_tournament_statistics(
+    statistics: Iterable[TournamentSampleStatistics],
+) -> None:
+    """Print aggregate statistics from randomized tournament samples."""
+
+    results = list(statistics)
+
+    if not results:
+        print("No randomized tournament statistics are available.")
+        return
+
+    sample_counts = {result.samples for result in results}
+    if len(sample_counts) != 1:
+        raise ValueError(
+            "All statistics rows must have the same sample count."
+        )
+
+    samples = results[0].samples
+    headers = (
+        "Rank",
+        "Player",
+        "Avg Points",
+        "Max Points",
+        "Std Dev",
+        "Avg W",
+        "Avg L",
+        "Avg D",
+        "Avg B",
+    )
+
+    rows = [
+        (
+            str(rank),
+            result.name,
+            f"{result.average_points:.2f}",
+            format_number(result.max_points),
+            f"{result.points_standard_deviation:.2f}",
+            f"{result.average_wins:.2f}",
+            f"{result.average_losses:.2f}",
+            f"{result.average_draws:.2f}",
+            f"{result.average_bankruptcies:.2f}",
+        )
+        for rank, result in enumerate(results, start=1)
+    ]
+
+    print(
+        f"RANDOMIZED TOURNAMENT STATISTICS "
+        f"({samples} samples)"
+    )
+    _print_table(
+        headers,
+        rows,
+        right_aligned={0, 2, 3, 4, 5, 6, 7, 8},
+    )
 
 
 def _print_table(

@@ -1,5 +1,5 @@
 from global_hegemony.strategies import *
-from global_hegemony.tournament import Tournament, TournamentEntry, TournamentMode
+from global_hegemony.tournament import Tournament, TournamentEntry, TournamentMode, run_randomized_tournament_samples, print_randomized_tournament_statistics
 
 
 def main() -> None:
@@ -41,6 +41,15 @@ def main() -> None:
     tournament = Tournament(entries, mode=TournamentMode.PERSISTENT)
     tournament.run()
     tournament.print_summary()
+
+    statistics = run_randomized_tournament_samples(
+        entries,
+        samples=100,
+        mode=TournamentMode.PERSISTENT,
+        # seed=42,
+    )
+    print()
+    print_randomized_tournament_statistics(statistics)
 
 if __name__ == "__main__":
     main()
