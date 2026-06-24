@@ -5,16 +5,20 @@ from ..player import Player
 
 class AntiAmbush(Player):
     def choose_action(self, view: GameView) -> Action:
+        if view.opponent_previous_action is Action.DEFECT and view.own_previous_action is Action.DEFECT:
+            return Action.COOPERATE
+
         if view.own_d > 4:
             return Action.DEFECT
 
         return Action.COOPERATE
 
+    def choose_self_modification(self, view):
+        return Modification.INCREASE_C
+
     def choose_opponent_modification(self, view: GameView) -> Modification:
         if view.opponent_previous_action is Action.DEFECT:
             return Modification.INCREASE_C
 
-        return Modification.DECREASE_C
+        return Modification.NO_CHANGE
 
-    def choose_self_modification(self, view):
-        return Modification.INCREASE_C

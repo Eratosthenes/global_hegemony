@@ -31,39 +31,23 @@ from ..player import Player
 
 class Forager(Player):
 
-    def _victim_defanged(self, view: GameView) -> bool:
-        # Opponent has no functioning weapon: free to raid, cannot punish back.
-        return view.opponent_d <= 0
-
     def choose_action(self, view: GameView) -> Action:
-        # Feed on a defanged opponent: defection strictly dominates here.
-        if self._victim_defanged(view) and view.own_d > 0:
+        # feed on a helpless opponent: defection strictly dominates here.
+        if view.opponent_d <= 0 and view.own_d > 0:
             return Action.DEFECT
 
-        # If WE are defanged, cooperating only bleeds abs(C); defect instead.
+        # If WE are fully armed, there's no point in cooperating
         if view.own_c <= 0:
             return Action.DEFECT
 
-        # Opponent is re-fanged (can punish) and we are healthy: coexist + industrialize.
         return Action.COOPERATE
 
     def choose_self_modification(self, view: GameView) -> Modification:
-        # While feeding, hold the weapon: INCREASE_C raises our C and keeps D from being
-        # dragged negative by the victim's disarm, so we can keep defecting. When coexisting,
-        # the same INCREASE_C is just industrialization. Either way, never self-convert to
-        # negative C (no self-bleed that would persist into later matches).
-        if view.own_d > 3:
-            return Modification.INCREASE_C
-        elif view.own_d < 3:
-            return Modification.DECREASE_C 
-        else:
-            return Modification.NO_CHANGE
+        return Modification.INCREASE_C
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
-        # While feeding on a defanged victim, suppress its production (DECREASE_C) -- a
-        # high-C victim that we knock down stays a victim AND exits the match crippled.
-        if self._victim_defanged(view):
-            return Modification.DECREASE_C
-        # Against a re-fanged opponent that we may have to defect on, push it back toward
-        # negative D (disarm) so it cannot sustain an attack on us.
-        return Modification.INCREASE_C
+        # if they just attacked, we resist
+        if view.opponent_previous_action is Action.DEFECT:
+            return Modification.INCREASE_C
+        
+        return Modification.NO_CHANGE
