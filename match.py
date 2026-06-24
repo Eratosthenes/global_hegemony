@@ -7,19 +7,19 @@ from global_hegemony.reporting import print_log_table, print_matchup, save_log_c
 from global_hegemony.strategies import *
 
 def main() -> None:
-    # player_one = CycleDefector("Cycle Defector")
+    player_one = CycleDefector("SpaceBeam")
     # player_one = AntiAmbush("Anti-Ambush Predator")
-    player_one = AntiAmbush("Strongman")
+    # player_one = AntiAmbush("Strongman")
     # player_one = AlwaysDefect("Warrior")
     # player_two = AntiAmbush("Strongman")
     # player_two = Forager("Forager")
     # player_two = TitForTat("Tit for Tat")
-    # player_two = AlwaysCooperate("Peaceful Industrialist")
+    # player_two = AlwaysCooperate("Paperclip Maximizer")
     # player_one = DisciplinedAmbush("Spider")
-    player_two = DisciplinedAmbush("Spider")
+    # player_two = DisciplinedAmbush("Spider")
     # player_one = DisciplinedAmbush("Disciplined Ambush")
     # player_two = Ambush("Ambusher")
-    # player_two = AlwaysDefect("Warrior")
+    player_two = AlwaysDefect("Warrior")
     # player_two = RaidAndHeal("Raid and Heal Predator")
 
     match = Match(player_one, player_two)

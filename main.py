@@ -38,7 +38,7 @@ def main() -> None:
         ),
     ]
 
-    tournament = Tournament(entries, mode=TournamentMode.PERSISTENT)
+    tournament = Tournament(entries, mode=TournamentMode.FRESH)
     tournament.run()
     tournament.print_summary()
 
