@@ -9,7 +9,7 @@ from .models import Number
 class Environment:
     STARTING_BANK = 200 
     SYNERGY_AMOUNT = 2
-    DEFECTION_COST = 1
+    DEFECTION_COST = 2
 
     def __init__(self, starting_bank: Number = STARTING_BANK) -> None:
         if starting_bank < 0:
