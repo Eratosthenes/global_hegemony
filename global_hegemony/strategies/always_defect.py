@@ -15,4 +15,8 @@ class AlwaysDefect(Player):
         return Modification.INCREASE_D
     
     def choose_self_modification(self, view):
+        # don't deindustrialize all the way to extinction
+        if view.own_c <= 2:
+            return Modification.NO_CHANGE
+
         return Modification.INCREASE_D

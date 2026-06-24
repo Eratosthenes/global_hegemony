@@ -25,16 +25,16 @@ def main() -> None:
             TitForTat,
         ),
         TournamentEntry.from_player_class(
-            "Forager",
-            Forager,
-        ),
-        TournamentEntry.from_player_class(
             "Warrior",
             AlwaysDefect,
         ),
         TournamentEntry.from_player_class(
             "Strongman",
             AntiAmbush,
+        ),
+        TournamentEntry.from_player_class(
+            "Forager",
+            Forager,
         ),
     ]
 

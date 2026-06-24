@@ -497,7 +497,7 @@ class Tournament:
         standing.draws += 1
 
         # The strategy occupies both seats during self-play.
-        standing.points = k1 + k2
+        standing.points = (k1 + k2) // 2
 
         if player_1.is_bankrupt or player_2.is_bankrupt:
             standing.disqualification_reason = "self-bankruptcy"
