@@ -25,6 +25,30 @@ class Match:
         self.winner: Optional[Player] = None
         self.end_reason: Optional[str] = None
         self.turn_log: list[TurnRecord] = []
+        self.append_initial_turn_record()
+    
+    def append_initial_turn_record(self) -> None:
+        """Append a turn record for turn 0, before any actions have been taken."""
+        record = TurnRecord(
+            turn=0,
+            p1_action="-",
+            p1_mod_dc="",
+            p1_c=self.player_1.c,
+            p1_d=self.player_1.d,
+            p1_capital_delta=0,
+            p1_vulture_prize=0,
+            p1_capital=self.player_1.capital,
+            p2_action="-",
+            p2_mod_dc="",
+            p2_c=self.player_2.c,
+            p2_d=self.player_2.d,
+            p2_capital_delta=0,
+            p2_vulture_prize=0,
+            p2_capital=self.player_2.capital,
+            environment_delta=0,
+            environment=self.environment.bank,
+        )
+        self.turn_log.append(record)
 
     @property
     def is_over(self) -> bool:

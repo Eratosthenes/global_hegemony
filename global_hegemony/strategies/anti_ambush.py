@@ -11,6 +11,7 @@ class AntiAmbush(Player):
             return Action.COOPERATE
 
         # attack if we are armed and we'll win under mutual defection
+        # bias toward defection to win more frequently
         if view.own_d > 0 and view.own_d >= view.opponent_d:
             return Action.DEFECT
 
@@ -25,7 +26,7 @@ class AntiAmbush(Player):
         return Modification.INCREASE_C
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
-        # if they just attacked, we resist
+        # resist attacks
         if view.opponent_previous_action is Action.DEFECT:
             return Modification.INCREASE_C
 
