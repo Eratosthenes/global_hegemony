@@ -25,10 +25,6 @@ def main() -> None:
             DisciplinedAmbush,
         ),
         TournamentEntry.from_player_class(
-            "Cautious Industrialist",
-            CautiousIndustrialist,
-        ),
-        TournamentEntry.from_player_class(
             "Forager",
             Forager,
         ),
@@ -37,12 +33,8 @@ def main() -> None:
             AlwaysDefect,
         ),
         TournamentEntry.from_player_class(
-            "Anti-Ambush Predator",
+            "Strongman",
             AntiAmbush,
-        ),
-        TournamentEntry.from_player_class(
-            "Pacifier",
-            Pacifier,
         ),
     ]
 

@@ -33,7 +33,7 @@ class Forager(Player):
 
     def choose_action(self, view: GameView) -> Action:
         # feed on a helpless opponent: defection strictly dominates here.
-        if view.opponent_d <= 0 and view.own_d > 0:
+        if view.own_d > 0 and view.opponent_d <= 0:
             return Action.DEFECT
 
         # If WE are fully armed, there's no point in cooperating
@@ -43,6 +43,7 @@ class Forager(Player):
         return Action.COOPERATE
 
     def choose_self_modification(self, view: GameView) -> Modification:
+        # grow by default
         return Modification.INCREASE_C
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
