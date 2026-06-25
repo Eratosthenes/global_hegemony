@@ -16,6 +16,7 @@ from .forager import Forager
 from .cycle_defector import CycleDefector
 from .anti_ambush import AntiAmbush
 from .warden import Warden
+from .prophet import Prophet
 
 __all__ = [
     "AlwaysCooperate",
@@ -34,4 +35,5 @@ __all__ = [
     "CycleDefector",
     "AntiAmbush",
     "Warden",
+    "Prophet",
 ]

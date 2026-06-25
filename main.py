@@ -17,8 +17,8 @@ def main() -> None:
             AntiAmbush,
         ),
         TournamentEntry.from_player_class(
-            "Raider",
-            RaidAndHeal,
+            "Prophet",
+            Prophet,
         ),
         TournamentEntry.from_player_class(
             "SpaceBeam",
