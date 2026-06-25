@@ -13,8 +13,8 @@ class RaidAndHeal(Player):
         name: str = "Raid and Heal",
         *,
         capital: Number = Player.STARTING_CAPITAL,
-        c: int = 7,
-        d: int = 3,
+        c: int = 5,
+        d: int = 5,
     ) -> None:
         super().__init__(
             name=name,
