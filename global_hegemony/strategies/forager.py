@@ -51,4 +51,12 @@ class Forager(Player):
         if view.opponent_previous_action is Action.DEFECT:
             return Modification.INCREASE_C
         
-        return Modification.NO_CHANGE
+        # otherwise, we are attacking
+        if view.opponent_c < view.own_d:
+            # if they have less industrial capacity than we have military capacity, we should industrialize them to intercept more
+            return Modification.INCREASE_C
+        elif view.opponent_c > view.own_d:
+            # if they have more industrial capacity than we have military capacity, we should deindustrialize them to weaken them
+            return Modification.INCREASE_D
+        else:
+            return Modification.NO_CHANGE

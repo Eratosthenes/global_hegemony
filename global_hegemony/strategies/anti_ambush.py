@@ -26,9 +26,10 @@ class AntiAmbush(Player):
         return Modification.INCREASE_C
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
-        # resist attacks
+        # they are attacking us
         if view.opponent_previous_action is Action.DEFECT:
+            # resist attacks
             return Modification.INCREASE_C
 
-        # we are attacking
+        # we are attacking; remain unopinionated
         return Modification.NO_CHANGE
