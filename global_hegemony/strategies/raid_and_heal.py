@@ -27,11 +27,15 @@ class RaidAndHeal(Player):
         """
         Raid whenever the weapon is ready.
         """
-        if view.own_d > view.opponent_d >= 0 or view.own_c <= 0:
-            # The weapon is ready and the opponent is vulnerable, or we do not have capacity to extract. Raid.
+        # if we have no capacity to extract, then raid
+        if view.own_c <= 0:
             return Action.DEFECT
 
-        # Either the weapon is not ready, or the opponent is not vulnerable. Cooperate.
+        # if we are ready and we have more military capacity than the opponent, raid.
+        if view.own_d > 0 and view.own_d > view.opponent_d:
+            return Action.DEFECT
+
+        # either we are not not ready, or the opponent is not vulnerable. 
         return Action.COOPERATE
 
     def choose_self_modification(
