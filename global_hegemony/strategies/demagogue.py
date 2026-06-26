@@ -18,24 +18,7 @@ from ..player import Player
 
 class Demagogue(Player):
 
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-        self._starting_capital = None
-        self._prev_capital = None 
-        self._losing_money = False 
-
     def choose_action(self, view: GameView) -> Action:
-        if view.turn_number == 1:
-            self._starting_capital = view.own_capital
-            self._prev_capital = view.own_capital
-        
-        # if we are losing money late in the game, cooperate
-        # this is the same type of vulnerability that Strongman has, but it makes the stategy mirror-viable
-        self._losing_money = view.turn_number > 10 and view.own_capital < self._prev_capital
-        self._prev_capital = view.own_capital # update for next turn
-        if self._losing_money:
-            return Action.COOPERATE
-
         my_prev = view.own_previous_action
         op_prev = view.opponent_previous_action
 
@@ -62,12 +45,13 @@ class Demagogue(Player):
         return Modification.INCREASE_C
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
+        # if we are attacking, weaken them
         if view.own_previous_action is Action.DEFECT and \
             view.opponent_previous_action is Action.COOPERATE:
             # we are exploiting them; keep them from re-arming
             return Modification.INCREASE_C
         
-        # Defend: if attacked, push their C up / D down so they can't sustain a raid on us.
+        # resist attacks
         if view.opponent_previous_action is Action.DEFECT:
             return Modification.INCREASE_C
         

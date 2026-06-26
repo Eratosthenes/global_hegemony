@@ -1,4 +1,4 @@
-"""An unconditional predator that deindustrializes cooperating victims."""
+"""A perpetual war economy that deindustrializes cooperating victims."""
 
 from ..models import Action, GameView, Modification
 from ..player import Player
@@ -14,9 +14,14 @@ class AlwaysDefect(Player):
 
     def choose_self_modification(self, view):
         # don't deindustrialize all the way to extinction
-        if view.own_c <= 2:
+        if view.own_c < 2:
             return Modification.INCREASE_C
+        
+        # stabilize at a high level of military capacity
+        if view.own_c == 2:
+            return Modification.NO_CHANGE
 
+        # increase military capacity by default
         return Modification.INCREASE_D
 
     def choose_opponent_modification(self, view: GameView) -> Modification:
