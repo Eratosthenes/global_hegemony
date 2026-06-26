@@ -15,7 +15,7 @@ class AntiAmbush(Player):
         if view.opponent_previous_action is Action.DEFECT and view.own_previous_action is Action.DEFECT:
             self._campaign = False
             return Action.COOPERATE
-
+        
         # we can bankrupt our opponent, so defect
         if abs(view.own_d) * view.own_d >= view.opponent_capital:
             self._campaign = True
