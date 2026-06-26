@@ -36,6 +36,14 @@ def main() -> None:
             "Tit for Tat",
             TitForTat,
         ),
+        TournamentEntry.from_player_class(
+            "Demagogue",
+            Demagogue,
+        ),
+        TournamentEntry.from_player_class(
+            "Raider",
+            RaidAndHeal,
+        )
     ]
 
     tournament = Tournament(entries, mode=TournamentMode.FRESH)

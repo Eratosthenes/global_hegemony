@@ -1,4 +1,4 @@
-"""A strategy that alternates between raiding and cooperative healing."""
+"""A strategy that alternates between raiding and cooperative healing. Built to bankrupt Paperclip Maximizer. """
 
 from ..models import Action, GameView, Modification, Number
 from ..player import Player

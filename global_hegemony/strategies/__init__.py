@@ -17,6 +17,7 @@ from .cycle_defector import CycleDefector
 from .anti_ambush import AntiAmbush
 from .warden import Warden
 from .prophet import Prophet
+from .demagogue import Demagogue
 
 __all__ = [
     "AlwaysCooperate",
@@ -36,4 +37,5 @@ __all__ = [
     "AntiAmbush",
     "Warden",
     "Prophet",
+    "Demagogue",
 ]
