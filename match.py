@@ -8,21 +8,20 @@ from global_hegemony.strategies import *
 
 def main() -> None:
     player_one = Prophet("Prophet")
-    # player_two = Prophet("Prophet")
     # player_one = AntiAmbush("Strongman")
     # player_one = AlwaysDefect("Warrior")
     # player_one = Forager("Forager")
     # player_one = AlwaysCooperate("Paperclip Maximizer")
     # player_one = RaidAndHeal("Raider")
     # player_one = Warden("Warden")
-    player_two = TitForTat("Tit for Tat")
+    # player_two = TitForTat("Tit for Tat")
     # player_two = AlwaysCooperate("Paperclip Maximizer")
     # player_two = DisciplinedAmbush("Spider")
     # player_two = Ambush("Ambusher")
     # player_two = AlwaysDefect("Warrior")
     # player_two = RaidAndHeal("Raider")
     # player_two = CycleDefector("SpaceBeam")
-    # player_two = AntiAmbush("Strongman")
+    player_two = AntiAmbush("Strongman")
 
     match = Match(player_one, player_two)
     match.play()
