@@ -37,7 +37,7 @@ class AntiAmbush(Player):
             self._campaign = False
 
         # runaway productivity condition
-        if view.own_c > 0 and view.own_c > 1.6*view.opponent_d:
+        if view.own_c > 0 and view.own_c > view.own_d + view.opponent_d:
             self._campaign = False
             return Action.COOPERATE
 
