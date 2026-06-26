@@ -10,12 +10,10 @@ from .pacifier import Pacifier
 from .sentinel import Sentinel
 from .disruptor import Disruptor
 from .disciplined_ambush import DisciplinedAmbush
-from .opening_raider import OpeningRaider
 from .saboteur_ambush import SaboteurAmbush
 from .forager import Forager
 from .cycle_defector import CycleDefector
 from .anti_ambush import AntiAmbush
-from .warden import Warden
 from .prophet import Prophet
 from .demagogue import Demagogue
 

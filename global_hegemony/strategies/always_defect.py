@@ -39,4 +39,3 @@ class AlwaysDefect(Player):
 
         # we have at least as much military capacity, so we can afford to deindustrialize them
         return Modification.INCREASE_D
-    
