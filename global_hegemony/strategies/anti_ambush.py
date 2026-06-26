@@ -36,6 +36,11 @@ class AntiAmbush(Player):
         if view.own_d <= 0:
             self._campaign = False
 
+        # runaway productivity condition
+        if view.own_c > 0 and view.own_c > 2*view.opponent_d:
+            self._campaign = False
+            return Action.COOPERATE
+
         return Action.COOPERATE
 
     def choose_self_modification(self, view):

@@ -7,11 +7,11 @@ from global_hegemony.reporting import print_log_table, print_matchup, save_log_c
 from global_hegemony.strategies import *
 
 def main() -> None:
-    player_one = Demagogue("Demagogue")
+    # player_one = Demagogue("Demagogue")
     # player_two = Demagogue("Demagogue")
     # player_one = Prophet("Prophet")
     # player_two = Prophet("Prophet")
-    # player_one = AntiAmbush("Strongman")
+    player_one = AntiAmbush("Strongman")
     # player_one = AlwaysDefect("Warrior")
     # player_one = Forager("Forager")
     # player_one = AlwaysCooperate("Paperclip Maximizer")
