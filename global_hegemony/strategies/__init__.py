@@ -28,12 +28,10 @@ __all__ = [
     "Sentinel",
     "Disruptor",
     "DisciplinedAmbush",
-    "OpeningRaider",
     "SaboteurAmbush",
     "Forager",
     "CycleDefector",
     "AntiAmbush",
-    "Warden",
     "Prophet",
     "Demagogue",
 ]
