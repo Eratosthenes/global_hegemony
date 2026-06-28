@@ -28,9 +28,13 @@ def main() -> None:
             "Paperclip Maximizer",
             AlwaysCooperate,
         ),
+        # TournamentEntry.from_player_class(
+        #     "Forager",
+        #     Forager,
+        # ),
         TournamentEntry.from_player_class(
-            "Forager",
-            Forager,
+            "Bismarck",
+            CautiousIndustrialist,
         ),
         TournamentEntry.from_player_class(
             "Tit for Tat",
